@@ -1,0 +1,21 @@
+in PATCH/DELETE
+
+<form>
+<input id="hidden" type="hidden" name="_method" value="PATCH/DELETE">
+</form>
+
+A few questions:
+
+
+
+I want to be able to do something like -
+  Number of players returns a range but then also adds that number of input fields when creating a new match
+
+  2 - 4 -> 3 -> creates 3 player input fields in new match form
+  can select from existing players
+
+  game.num_of_players -> inputs num_of_players fields in new match
+
+  game.match.player.score -> Catan.4.Tyler.score = 17
+  game.match.all
+  game.match.winner -> Azul.5867.winner = "Fei"

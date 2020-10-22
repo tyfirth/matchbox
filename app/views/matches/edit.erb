@@ -1,0 +1,14 @@
+<form  action="/matches/<%=@match.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <label for="edit_name">Edit Name: </label>
+    <p><input type="text" name="match[name]" id="name" value="<%=@match.name %>"> </p>
+
+    <label for="edit_winner">Edit Winner: </label>
+    <p><input type="text" name="match[winner]" id="winner" value="<%=@match.winner%>"></p>
+
+    <label for="edit_score">Edit Score: </label>
+    <p><input type="text" name="match[score]" id="score" value="<%=@match.score%>"></p>
+
+  <input type="submit" name="submit" value="Confirm">
+</form>

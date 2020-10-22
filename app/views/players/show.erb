@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="UTF-8">
+
+<head>
+  </head>
+
+  <body>
+
+    <h1> Welcome to the Game </h1>
+      <h2> Player Profile </h2>
+
+    <h3> Name: <%= @player.name %> </h3>
+    <h3> Age: <%= @player.age %> </h3>
+    <h3> Favorite Game: <%= @player.favorite_game %> </h3>
+    <h3> Motto: <%= @player.motto%> </h3>
+    <h3>Victory Phrase: <%= @player.win_phrase%></h3>
+    <h3>Losing Phrase: <%= @player.lose_phrase %></h3>
+
+      <br>
+
+    <form action="/players/<%=@player.id%>" method="post">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+    <br>
+    <form  action="/players/<%=@player.id%>/edit" method="get">
+      <input type="submit" value="Edit">
+    </form>
+
+      <br>
+
+    <a href="/players"> Go To Players </a>
+    <br>
+    <a href="/">Go To Menu</a>
+
+    </body>
+
+</html>

@@ -1,0 +1,25 @@
+<h1><%=@match.name%></h1>
+<h2><%=@match.created_at.strftime("%A, %d %b %Y %l:%M %p")%></h2>
+<br>
+<h2>Winner: </h2>
+<h3><%=@match.winner %></h3>
+<br>
+<h3>Score:</h3>
+<p><%=@match.score%></p>
+<br>
+
+<form action="/matches/new" method="get">
+  <input type="submit" name="submit" value="New Match">
+</form>
+
+<br>
+<form action="/matches/<%=@match.id%>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>
+
+<form  action="/matches/<%=@match.id%>/edit" method="get">
+  <input type="submit" value="Edit">
+</form>
+<br>
+<a href="/">Go To Menu</a>

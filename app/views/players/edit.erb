@@ -1,0 +1,25 @@
+
+
+<form  action="/players/<%=@player.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <label for="edit_name">Edit Name: </label>
+    <p><input type="text"id="name" name="player[name]" value="<%=@player.name %>"> </p>
+
+  <label for="edit_age">Edit Age: </label>
+    <p><input type="text" id="age" name="player[age]" value="<%=@player.age %>"></p>
+
+  <label for="edit_favorite_game">Edit Favorite Game: </label>
+    <p><input type="text"id="favorite_game" name="player[favorite_game]"value="<%=@player.favorite_game%>"></p>
+
+  <label for="edit_win_phrase">Edit Win Phrase: </label>
+    <p><input type="text" id="win_phrase" name="player[win_phrase]" value="<%=@player.win_phrase%>"></p>
+
+  <label for="edit_lose_phrase">Edit Losing Phrase: </label>
+    <p><input type="text" id="lose_phrase" name="player[lose_phrase]" value="<%=@player.lose_phrase%>"></p>
+
+  <label for="edit_motto">Edit Motto: </label>
+    <p><input type="text" id="motto" name="player[motto]" value="<%=@player.motto%>"></p>
+
+  <input type="submit" name="submit" value="Confirm">
+</form>

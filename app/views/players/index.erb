@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<h1>All da playas</h1>
+</head>
+
+<body>
+
+<%@players.each do |player|%>
+<h3> <a href="/players/<%=player.id%>"> <%=player.name%> </a> </h3>
+<% end %>
+
+<a href="/players/new">Create New Player</a>
+<br>
+<a href="/">Go To Menu</a>
+
+</body>
+</html>

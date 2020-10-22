@@ -1,0 +1,20 @@
+<h1>Record a Match</h1>
+
+<form  action="/matches" method="post">
+  <h2>Name of the Game: <input type="text" name="name" id="name"></h2>
+  <br>
+
+<h2>Players: </h2>
+<%@players.each do |player|%>
+  <p><input type="checkbox" name="matches[player_id][]" id="<%=player.id%>" value="<%=player.id%>"> <%=player.name%> </p>
+<%end%>
+<br>
+
+<h2>Winner: </h2>
+<%@players.each do |player|%>
+  <p><input type="radio" name="winner" id="winner" value="<%=player.name%>"> <%=player.name%> </p>
+  <%end%>
+
+  <p>Score: <input type="text" name="score" id="score"> </p>
+  <input type="submit" name="submit" value="Submit">
+</form>

@@ -1,0 +1,9 @@
+<h1>All the Matches</h1>
+
+<%@matches.each do |match|%>
+<h3> <a href="/matches/<%=match.id%>"> <%=match.name%> </a> </h3>
+<% end %>
+<br>
+<a href="/matches/new">Create New Match</a>
+<br>
+<a href="/">Go To Menu</a>
