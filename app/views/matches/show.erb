@@ -2,6 +2,7 @@
 <h2><%=@match.created_at.strftime("%A, %d %b %Y %l:%M %p")%></h2>
 <br>
 <h2>Winner: </h2>
+
 <h3><%=@match.winner %></h3>
 <br>
 <h3>Score:</h3>
@@ -13,6 +14,8 @@
 </form>
 
 <br>
+
+<% if current_user.id == @match.player_id %>
 <form action="/matches/<%=@match.id%>" method="post">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">
@@ -21,5 +24,17 @@
 <form  action="/matches/<%=@match.id%>/edit" method="get">
   <input type="submit" value="Edit">
 </form>
+<% else %>
+  <%= erb :error %>
+<% end %>
 <br>
+<% if logged_in? %>
+<form action="/matches/new" method="get">
+  <input type="submit" name="submit" value="New Match">
+</form>
+<br>
+  <form action="/logout" method="get">
+    <input type="submit" name="submit" value="Log Out">
+  </form>
+<% end %>
 <a href="/">Go To Menu</a>

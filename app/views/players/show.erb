@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 
 <head>
+  <% if current_user.id == @player.id %>
+  <h1> Welcome to the Game </h1>
+  <% else %>
+  <h1>Viewing Opponent Details</h1>
+  <% end %>
+    <h2> Player Profile </h2>
   </head>
 
   <body>
-
-    <h1> Welcome to the Game </h1>
-      <h2> Player Profile </h2>
-
     <h3> Name: <%= @player.name %> </h3>
     <h3> Age: <%= @player.age %> </h3>
     <h3> Favorite Game: <%= @player.favorite_game %> </h3>
@@ -20,6 +22,7 @@
 
       <br>
 
+      <% if current_user.id == @player.id%>
     <form action="/players/<%=@player.id%>" method="post">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete">
@@ -28,9 +31,19 @@
     <form  action="/players/<%=@player.id%>/edit" method="get">
       <input type="submit" value="Edit">
     </form>
-
+    <%end%>
       <br>
-
+      <% if logged_in? %>
+      <form action="/matches/new" method="get">
+        <input type="submit" name="submit" value="New Match">
+      </form>
+      <br>
+        <form action="/logout" method="get">
+          <input type="submit" name="submit" value="Log Out">
+        </form>
+      <% end %>
+      <br>
+      <br>
     <a href="/players"> Go To Players </a>
     <br>
     <a href="/">Go To Menu</a>

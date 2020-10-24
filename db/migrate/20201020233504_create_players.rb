@@ -8,6 +8,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :favorite_game
       t.string :win_phrase
       t.string :lose_phrase
+      t.string :password_digest
     end
   end
 end

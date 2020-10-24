@@ -6,47 +6,40 @@ class ApplicationController < Sinatra::Base
 
   enable :sessions
   set :session_secret, "IYAMAwesome123!"
-
   end
 
   get "/" do
     erb :index
   end
 
-  get '/registrations/signup' do
-    erb :'/registrations/signup'
-  end
-
-  post '/registrations' do
-    @user = User.new(
-      name: params["name"],
-      email: params["email"],
-      password: params["password"]
-    )
-    @user.save
-    session[:user_id] = @user.id
-
-    redirect '/users/home'
-  end
-
   get '/sessions/login' do
     erb :'/sessions/login'
   end
 
-  post '/sessions' do
-    @user = User.find_by(name: params[:name], password: params[:password])
+  post '/login' do
+    @player = Player.find_by(name: params[:name])
 
-    if @user
-      session[:user_id] = @user.id
-      redirect 'users/home'
+    if @player && @player.authenticate(params[:password])
+      session[:player_id] = @player.id
+
+      redirect to "/players/#{@player.id}"
+    end
+    erb :error
+  end
+
+  get '/logout' do
+  session.clear
+  redirect to '/'
+end
+
+  helpers do
+    def current_user
+     current_user ||= Player.find(session[:player_id]) if session[:player_id]
     end
 
-    redirect '/sessions/login'
+    def logged_in?
+      !!current_user
   end
-
-  get '/users/home' do
-    @user = User.find(session[:user_id])
-    erb :'/users/home'
-  end
+end
 
 end
