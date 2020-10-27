@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_233521) do
     t.string "name"
     t.string "winner"
     t.integer "score"
+    t.string "players"
+    t.string "notes"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

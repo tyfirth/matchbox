@@ -19,3 +19,6 @@ I want to be able to do something like -
   game.match.player.score -> Catan.4.Tyler.score = 17
   game.match.all
   game.match.winner -> Azul.5867.winner = "Fei"
+
+
+<% if current_user.id == @match.player_id %>

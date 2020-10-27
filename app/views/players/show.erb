@@ -22,7 +22,7 @@
 
       <br>
 
-      <% if current_user.id == @player.id%>
+      <% if current_user.id == @player.id && logged_in?%>
     <form action="/players/<%=@player.id%>" method="post">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete">

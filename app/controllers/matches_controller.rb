@@ -19,16 +19,18 @@ class MatchesController < ApplicationController
 
   post '/matches' do
     @winner = Player.find_by(name: params[:winner])
-    binding.pry
     @match = Match.create(
       name: params[:name],
       winner: @winner.name,
-      score: params[:score]
+      score: params[:score],
+      notes: params[:notes]
     )
-
     @match[:player_id] = @winner.id
-    binding.pry
+    #binding.pry
+    @match.players = params[:matches][:player_id].map{|id|  Player.find(id).name}
+    #binding.pry
     @match.save
+    #binding.pry
     redirect :"/matches/#{@match.id}"
   end
 #------------------------------------------#
@@ -39,6 +41,11 @@ class MatchesController < ApplicationController
       erb :error
     else
     @match = Match.find(params[:id])
+    #binding.pry
+    #match_players = @match.players.split(",")
+    #match_players = match_players.map{|w| w.gsub(/(\W)/, "")}
+
+      #  binding.pry
     erb :'/matches/show'
   end
   end
